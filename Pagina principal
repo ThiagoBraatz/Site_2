@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Braatz Tech Solutions</title>
+
+</head>
+
+
+
+<body>
+
+    <header class="container-fluid p-2 bg-warning text-center">
+
+        <nav class="navbar navbar-expand-lg bg-warning">
+
+            <div class="row">
+
+                <figure class="col text center">
+
+                    <img src="logo.png" alt="Logo">
+
+                </figure>
+
+            </div>
+
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+
+                    aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end bg-warning" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" aria-current="page" href="#">Nossa história</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#">Serviços</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#">Contato</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <section class="container-fluid bg-light">
+
+        <h2>Cadastro</h2>
+
+        <form onsubmit="obterDadosFormulario(event)">
+
+            <fieldset>
+
+                <div class="mb-3">
+
+                    <label class="form-label" for="nome">Nome:</label>
+
+                    <input type="text" class="form-control" name="nome" id="nome">
+
+                </div>
+
+
+
+                <div class="mb-3"></div>
+
+                <label class="form-label" for="idade">Idade:</label>
+
+                <input type="number" class="form-control" name="idade" id="idade">
+
+                </div>
+
+
+
+                <div class="mb-3"></div>
+
+                <label class="form-label" for="cargo">Cargo:</label>
+
+                <select class="form-control" name="cargo" id="cargo">
+
+                    <option value="">Clique para escolher uma das opções...</option>
+
+                    <option value="Gerente">Gerente</option>
+
+                    <option value="Coordenador">Coordenador</option>
+
+                    <option value="Desenvolvedor">Desenvolvedor</option>
+
+                </select>
+
+                </div>
+
+
+
+                <div class="mb-3"></div>
+
+                <label class="form-label" for="departamento">Área TI:</label>
+
+                <select class="form-control" name="departamento" id="departamento">
+
+                    <option value="">Clique para escolher uma das opções...</option>
+
+                    <option value="Desenvolvimento">Desenvolvimento</option>
+
+                    <option value="Infraesturtura">Infraesturtura</option>
+
+                    <option value="Cybersegurança">Cybersegurança</option>
+
+                    <option value="Planejamento">Planejamento</option>
+
+                </select>
+
+                </div>
+
+
+
+                <div class="mb-3"></div>
+
+                <label class="form-label" for="linguagem">Linguagem:</label>
+
+                <select class="form-control" name="linguagem" id="linguagem">
+
+                    <option value="">Clique para escolher uma das opções...</option>
+
+                    <option value="JavaScript">JavaScript</option>
+
+                    <option value="PLSQL">PL/SQL</option>
+
+                    <option value="Python">Python</option>
+
+                    <option value="C#">C#</option>
+
+                    <option value=".NET">.NET</option>
+
+                </select>
+
+                </div>
+
+
+
+                <br><button type="submit">Enviar</button><br>
+
+            </fieldset>
+
+        </form>
+
+
+
+        <section class="container-fluid bg-light text-center"><br>
+
+        <h5><div id="erro"></div></h5>
+
+        <h5><p id="apresentacao"></p></h5>
+
+        <h5><p id="fazendo"></p></h5>
+
+        </section>
+
+
+
+
+
+        <script>
+
+            class Funcionario {
+
+                constructor(nome, idade, cargo) {
+
+                    this.nome = nome;
+
+                    this.idade = idade;
+
+                    this.cargo = cargo;
+
+                }
+
+
+
+
+
+                seApresentar() {
+
+                    return `Muito prazer, eu meu chamo ${this.nome}, tenho ${this.idade} anos e sou ${this.cargo}.`
+
+                }
+
+
+
+
+
+                trabalhar() {
+
+                    return `Funcionário ${this.nome} está trabalhando.`
+
+                }
+
+            }
+
+
+
+
+
+            class Gerente extends Funcionario {
+
+                constructor(nome, idade, cargo, departamento) {
+
+                    super(nome, idade, cargo);
+
+                    this.departamento = departamento;
+
+                }
+
+
+
+
+
+                gerenciar() {
+
+                    return `${this.nome} está gerenciando o departamento ${this.departamento}.`;
+
+                }
+
+            }
+
+
+
+            class Coordenador extends Funcionario {
+
+                constructor(nome, idade, cargo, departamento) {
+
+                    super(nome, idade, cargo);
+
+                    this.departamento = departamento;
+
+                }
+
+
+
+
+
+                coordenar() {
+
+                    return `${this.nome} está coordenando o departamento ${this.departamento}.`;
+
+                }
+
+            }
+
+
+
+
+
+
+
+            class Desenvolvedor extends Funcionario {
+
+                constructor(nome, idade, cargo, linguagem) {
+
+                    super(nome, idade, cargo);
+
+                    this.linguagem = linguagem;
+
+                }
+
+
+
+
+
+                programar() {
+
+                    return `${this.nome} está programando em ${this.linguagem}.`
+
+                }
+
+            }
+
+
+
+
+
+            function exibirErro(mensagem) {
+
+                const elementoErro = document.getElementById("erro");
+
+                elementoErro.innerHTML = mensagem;
+
+                elementoErro.style.color = "red";
+
+            }
+
+
+
+
+
+            function obterDadosFormulario(event) {
+
+                event.preventDefault();
+
+
+
+
+
+                const nome = document.getElementById("nome").value;
+
+                const idade = parseInt(document.getElementById("idade").value);
+
+                const cargo = document.getElementById("cargo").value;
+
+                const departamento = document.getElementById("departamento").value;
+
+                const linguagem = document.getElementById("linguagem").value;
+
+
+
+
+
+
+
+                if (!nome || !idade || !cargo || !departamento || !linguagem) {
+
+                    exibirErro("Preencha todos os campos!");
+
+                    return;
+
+                }
+
+
+
+
+
+                exibirErro('')
+
+                const dados = { nome, idade, cargo, departamento, linguagem }
+
+                cadastroNovo(dados)
+
+            }
+
+
+
+
+
+            function cadastroNovo(dados) {
+
+
+
+
+
+                try {
+
+
+
+
+
+                    const newFunc = new Funcionario(dados.nome, dados.idade, dados.cargo)
+
+
+
+
+
+                    const apresentando = document.getElementById("apresentacao");
+
+                    apresentando.innerHTML = newFunc.seApresentar();
+
+
+
+
+
+                    if (dados.cargo == "Gerente") {
+
+                        const newFunc = new Gerente(dados.nome, dados.idade, dados.cargo, dados.departamento)
+
+                        const fazendo = document.getElementById("fazendo");
+
+                        fazendo.innerHTML = newFunc.gerenciar();
+
+                    }
+
+
+
+                    if (dados.cargo == "Coordenador") {
+
+                        const newFunc = new Coordenador(dados.nome, dados.idade, dados.cargo, dados.departamento)
+
+                        const fazendo = document.getElementById("fazendo");
+
+                        fazendo.innerHTML = newFunc.coordenar();
+
+                    }
+
+
+
+
+
+                    if (dados.cargo == "Desenvolvedor") {
+
+                        const newFunc = new Desenvolvedor(dados.nome, dados.idade, dados.cargo, dados.linguagem);
+
+                        const fazendo = document.getElementById("fazendo");
+
+                        fazendo.innerHTML = newFunc.programar();
+
+                    }
+
+
+
+
+
+                } catch (error) {
+
+                    exibirErro(error.message);
+
+                }
+
+            }
+
+
+
+
+
+        </script>
+
+    </section>
+
+
+
+    <section class="container-fluid bg-primary text-center p-2 text-white bg-opacity-75"><br>
+
+        <div class="container">
+
+            <h1>Trazemos tecnologia prática
+
+                experiência para desenvolver vencedores
+
+                estratégias digitais</h1>
+
+            <p>Da concepção e design de arquiteturas de TI críticas para os negócios ao gerenciamento de processos de
+
+                transformação e implementação digitais. Nossas equipes trabalham em todo o mundo para desenvolver
+
+                estratégias e conceitos de TI para empresas renomadas e players globais..</p>
+
+        </div>
+
+    </section>
+
+    <section class="container-fluid bg-danger text-center p-2"><br>
+
+        <div class="text-center text-section-light-text" data-mode="light" data-component-name="heading-group"><br>
+
+            <h3 class="richtext text-t2">“A Braatz Tech é a melhor consultoria em TI que já testamos, e nós testamos
+
+                todas.”</h3>
+
+            <p class="richtext text-body-lg pt-sm">Jonathon Bayme, CEO da Theory11</p>
+
+        </div>
+
+    </section>
+
+    <section class="container-fluid bg-success text-center p-2 bg-opacity-75"><br>
+
+        <h2 class="sc-kx01pk-3 gQRehI">Empresas que confiam no nosso método</h2>
+
+        <div class="max-w-[210px]">
+
+            <picture data-component-name="image"><img alt="Sallve" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/sallve-056916c002d2c35e585b35f6c3c327d931aa8afab0c6674f8b13d2e7e934ae60.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Glambox" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/glambox-20434d63f53e561907de07645cc9abef5e95ce7a6b553ca9526c780fed61fc2c.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Biossance" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/biossance-c996843b16b2357e6eca2906c1302345b5cb5ff5a26051e7d8b0dac668a4ff5b.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Zissou" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/zissou-892078cff5bb35cf66d68ae41046d23fc4ff00b5930fe6a25ca23f4068320484.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Grand Cru" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/grand-cru-9ff270cdaff8fdb7614a1b924441c0ada48cf009336a58d19e50ee1b71bba875.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="de Betti" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/debetti-473d0920ae9199b357b29debecc686a65351d7fa5edd4f61a461d824f40115aa.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Pantynova" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/pantynova-8034a5791a51d0ad882d682c5d1aab22993b87e7570936efc2f016dbce94d764.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Men's Market" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/mens-market-d2c7cf0085af3b3d06bba3a37b3cb3bd46a531244aff8a91b3abb0e5658c19d2.svg">
+
+            </picture>
+
+            <picture data-component-name="image"><img alt="Kings Sneakers" class="w-full h-full object-cover" src=""
+
+                    srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/cms/logo-soup/pt/kings-sneakers-30d318bd4a4a5053860abc17275a62f9337c5481c2a73ea9452717494aea5a91.svg">
+
+            </picture>
+
+        </div>
+
+    </section>
+
+
+
+    <footer>
+
+        <div class="container-fluid bg-warning p-2 text-center">
+
+            <p>&copy; Braatz Tech Solutions Ltda</p>
+
+            <p>Desenvolvido por Thiago Braatz - 2024</p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+
+</html>
